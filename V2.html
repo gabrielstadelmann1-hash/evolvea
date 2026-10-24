@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Evolvea : app de muscu, cardio et nutrition gratuite</title>
+<meta name="description" content="App gratuite et sans pub pour la muscu, le cardio et la nutrition : séances, courses en GPS, calories par scan ou photo. iPhone, Apple Watch, Android et Web.">
+<meta name="theme-color" content="#0d2818">
+<meta name="apple-itunes-app" content="app-id=6797883219">
+<meta property="og:title" content="Evolvea — Évolue, un jour après l’autre">
+<meta property="og:description" content="Muscu, cardio et nutrition dans une app gratuite et sans pub. Sur iPhone, Apple Watch, Android et Web.">
+<meta property="og:image" content="https://evolvea.fit/img/fr/og.jpg">
+<link rel="canonical" href="https://evolvea.fit/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20rx%3D%2210%22%20fill%3D%22%230d2818%22/%3E%3Cpath%20d%3D%22M13.1%2012.6V28.4M13.1%2012.6H26.9M13.1%2020.5H24M13.1%2028.4H26.9%22%20fill%3D%22none%22%20stroke%3D%22%232ecc71%22%20stroke-width%3D%224.2%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3Ccircle%20cx%3D%2230.6%22%20cy%3D%229.6%22%20r%3D%221.7%22%20fill%3D%22%232ecc71%22/%3E%3C/svg%3E">
+<link rel="preload" as="image" href="https://evolvea.fit/img/fr/shot_accueil.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Evolvea","applicationCategory":"HealthApplication","operatingSystem":"iOS, Android, Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"description":"App gratuite et sans pub pour la musculation, le cardio et la nutrition."}</script>
+<style>
+:root{--g0:#0d2818;--g1:#2ecc71;--g2:#1c4a2e;--bone:#E4E6E1;--paper:#F2F3EF;--ink:#0b1710;--mu:#5a655d;--ln:rgba(11,23,16,.12);--sans:"Inter Tight",system-ui,sans-serif;--serif:"Instrument Serif",Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:var(--sans);background:var(--bone);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+:focus-visible{outline:2px solid var(--g1);outline-offset:3px}
+em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em}
+.wrap{width:min(1220px,calc(100% - 48px));margin:0 auto}
+h1,h2,h3{font-weight:500;letter-spacing:-.055em;line-height:.94}
+h2{font-size:clamp(2.4rem,5.2vw,4.9rem)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:1.05rem 1.7rem;border-radius:99px;background:var(--ink);color:#fff;font-weight:600;font-size:.97rem;transition:transform .25s,box-shadow .25s,background .25s;will-change:transform}
+.btn:hover{box-shadow:0 14px 30px -12px rgba(13,40,24,.55)}.btn.g{background:var(--g1);color:var(--g0)}.btn.out{background:transparent;color:inherit;border:1px solid currentColor}.btn.sm{padding:.65rem 1.15rem;font-size:.88rem}
+.badges{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center}.badges img{height:50px;width:auto;transition:transform .25s}.badges a:hover img{transform:translateY(-3px)}
+.grain{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.05;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.logo{font-weight:700;font-size:1.12rem;letter-spacing:.14em;display:flex;align-items:center;gap:.65rem}.logo svg{width:34px;height:34px;flex:none;filter:drop-shadow(0 4px 10px rgba(46,204,113,.35))}
+
+/* nav */
+.nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:70;width:min(960px,calc(100% - 24px));display:flex;align-items:center;justify-content:space-between;padding:.5rem .5rem .5rem 1.1rem;border-radius:99px;background:rgba(13,40,24,.55);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.14);color:#fff;overflow:hidden;transition:background .4s,color .4s,border-color .4s}
+.nav.lt{background:rgba(242,243,239,.8);color:var(--ink);border-color:var(--ln)}
+.nav:after{content:"";position:absolute;left:0;bottom:0;height:2px;width:var(--p,0%);background:var(--g1)}
+.links{display:flex;gap:1.8rem;font-size:.9rem;opacity:.85}.links a:hover{opacity:1}
+
+/* hero */
+.hero{position:relative;background:var(--g0);color:#fff;border-radius:0 0 56px 56px;overflow:hidden;padding:150px 0 90px;isolation:isolate}
+.hero:before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(60% 50% at 78% 38%,rgba(46,204,113,.28),transparent 70%),radial-gradient(40% 40% at 8% 90%,rgba(46,204,113,.14),transparent 70%)}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(70% 70% at 60% 40%,#000,transparent);-webkit-mask-image:radial-gradient(70% 70% at 60% 40%,#000,transparent)}
+.glow{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(closest-side,rgba(46,204,113,.35),transparent);left:0;top:0;pointer-events:none;z-index:-1;transform:translate(var(--mx,60vw),var(--my,30vh)) translate(-50%,-50%);transition:transform .25s ease-out}
+.hg{display:grid;grid-template-columns:1.02fr .98fr;gap:2rem;align-items:center}
+h1{font-size:clamp(3.2rem,7vw,6.9rem);margin-bottom:1.5rem}
+h1 span{display:inline-block;opacity:0;transform:translateY(46px) rotate(2deg);animation:wd .9s cubic-bezier(.2,.7,.1,1) calc(var(--i)*.07s + .15s) forwards}
+h1 em{color:var(--g1)}
+@keyframes wd{to{opacity:1;transform:none}}
+.lead{font-size:1.2rem;color:rgba(255,255,255,.76);max-width:34rem;margin-bottom:2rem;animation:up 1s ease .7s both}
+.hero .badges{animation:up 1s ease .85s both}.hsub{margin-top:1rem;font-size:.92rem;color:rgba(255,255,255,.62);animation:up 1s ease 1s both}.hsub a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.hfacts{display:flex;gap:2rem;flex-wrap:wrap;margin-top:2.4rem;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.14);animation:up 1s ease 1.1s both}
+.hfacts div{font-size:.84rem;color:rgba(255,255,255,.62)}.hfacts b{display:block;font-size:1.8rem;letter-spacing:-.04em;color:#fff;line-height:1.1}
+.stage{position:relative;height:660px;perspective:1700px;animation:up 1.2s ease .5s both}
+.cl{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .3s ease-out}
+.pp{position:absolute;left:50%;top:50%;width:var(--w,260px);transform-style:preserve-3d;transform:translate(-50%,-50%) translateX(var(--x)) translateZ(var(--z)) rotateY(var(--r));animation:flt 7s ease-in-out infinite;animation-delay:var(--d,0s)}
+.pp.c{--x:0px;--z:70px;--r:0deg;--w:285px;z-index:3}.pp.l{--x:-205px;--z:-70px;--r:26deg;--d:-2s;z-index:2}.pp.r{--x:205px;--z:-70px;--r:-26deg;--d:-4s;z-index:2}
+@keyframes flt{50%{margin-top:-14px}}
+.shot{border-radius:30px;overflow:hidden;background:#17382a;box-shadow:0 50px 80px -24px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.14)}.shot img{width:100%;height:auto}
+.fchip{position:absolute;z-index:6;padding:.7rem 1rem;border-radius:18px;background:rgba(255,255,255,.12);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.26);font-size:.82rem;box-shadow:0 20px 40px rgba(0,0,0,.3);animation:flt 6s ease-in-out infinite}
+.fchip b{display:block;font-size:1.08rem;letter-spacing:-.03em;line-height:1.15}.fchip.pr{background:var(--g1);color:var(--g0);border-color:var(--g1)}
+.fc1{right:0;top:12%}.fc2{left:-2%;bottom:22%;animation-delay:-3s}.fc3{right:6%;bottom:6%;animation-delay:-1.5s}
+
+/* marquee */
+.marq{overflow:hidden;padding:1.7rem 0;background:var(--bone)}
+.track{display:flex;gap:2.6rem;width:max-content;animation:mq 46s linear infinite;font-size:clamp(1.7rem,3.6vw,3rem);letter-spacing:-.045em;font-weight:500;white-space:nowrap}.track em{color:#7a857d}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+.sec{padding:120px 0 20px}
+.hd{display:flex;justify-content:space-between;align-items:end;gap:3rem;margin-bottom:3rem}.hd p{max-width:25rem;color:var(--mu)}
+
+/* démo */
+.dg{display:grid;grid-template-columns:.9fr 1.1fr;gap:5vw;align-items:center}
+.dg h2{margin-bottom:1.4rem}.dg .lead2{color:var(--mu);font-size:1.12rem;max-width:30rem;margin-bottom:1.6rem}
+.steps{list-style:none;counter-reset:s;margin-bottom:2rem}.steps li{counter-increment:s;display:flex;gap:1rem;align-items:center;padding:.85rem 0;border-bottom:1px solid var(--ln);font-weight:500}.steps li:before{content:counter(s);width:30px;height:30px;border-radius:50%;background:var(--g0);color:var(--g1);display:grid;place-items:center;font-size:.85rem;font-weight:700;flex:none}
+.dm{width:min(350px,100%);margin:0 auto;border-radius:48px;padding:11px;background:#08120c;box-shadow:0 60px 100px -34px rgba(13,40,24,.8),0 0 0 1px rgba(255,255,255,.1);position:relative}
+.dscr{position:relative;border-radius:38px;background:#f4f6f2;min-height:590px;padding:22px 16px 18px;overflow:hidden}
+.dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.dh b{font-size:1.2rem;letter-spacing:-.03em}.dh small{color:var(--mu);display:block;font-size:.76rem}
+.tag{padding:.25rem .65rem;border-radius:99px;background:rgba(46,204,113,.18);color:#0f6a37;font-size:.7rem;font-weight:700}
+.dst{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}.dst div{background:#fff;border-radius:16px;padding:.65rem .75rem;border:1px solid var(--ln)}.dst small{color:var(--mu);font-size:.68rem;display:block}.dst b{font-size:1.15rem;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.sh{display:grid;grid-template-columns:26px 1fr 1fr 46px;gap:8px;color:var(--mu);font-size:.7rem;padding:0 .5rem .4rem;text-align:center}
+.sr{display:grid;grid-template-columns:26px 1fr 1fr 46px;gap:8px;align-items:center;padding:.5rem;border-radius:18px;background:#fff;border:1px solid var(--ln);margin-bottom:8px;transition:background .3s,border-color .3s}
+.sr.done{background:#e1f7e9;border-color:#a9e3be}.sr .n{font-weight:700;color:var(--mu);text-align:center}
+.sr label{position:relative;display:block}.sr input{width:100%;padding:.62rem .4rem .62rem .65rem;border-radius:12px;border:1px solid var(--ln);font:inherit;font-weight:600;background:#f6f8f4;color:var(--ink);outline:0;-moz-appearance:textfield}.sr input:focus{border-color:var(--g1);box-shadow:0 0 0 3px rgba(46,204,113,.25)}.sr input:disabled{background:transparent;border-color:transparent}
+.sr label small{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-size:.64rem;color:var(--mu);pointer-events:none}
+.ok{width:46px;height:46px;border-radius:15px;background:var(--g0);color:var(--g1);font-weight:700;font-size:1.1rem;display:grid;place-items:center;transition:transform .2s,background .3s}.ok:not(:disabled):hover{transform:scale(1.07)}.ok:disabled{background:#d3dbd5;color:#9aa69d;cursor:default}.sr.done .ok{background:var(--g1);color:var(--g0)}
+.pr-b{display:inline-block;margin-left:.3rem;padding:.1rem .45rem;border-radius:99px;background:var(--g1);color:var(--g0);font-size:.62rem;font-weight:700;vertical-align:middle}
+.dnote{font-size:.78rem;color:var(--mu);margin-top:.8rem;text-align:center}
+.rest{position:absolute;inset:0;background:rgba(13,40,24,.96);color:#fff;display:none;flex-direction:column;align-items:center;justify-content:center;gap:1rem;z-index:5;text-align:center}.rest.on{display:flex}
+.ring{position:relative;width:170px;height:170px}.ring svg{width:100%;height:100%;transform:rotate(-90deg)}.ring circle{fill:none;stroke-width:9;stroke-linecap:round}.ring .bg{stroke:rgba(255,255,255,.12)}.ring .fg{stroke:var(--g1);stroke-dasharray:440;stroke-dashoffset:0;transition:stroke-dashoffset 1s linear}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:2.6rem;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.rest small{color:rgba(255,255,255,.65)}.rest .btn{padding:.7rem 1.3rem;font-size:.88rem}
+.sum{position:absolute;inset:0;background:var(--g0);color:#fff;display:none;flex-direction:column;justify-content:center;padding:26px 22px;z-index:6}.sum.on{display:flex}
+.sum h3{font-size:2.5rem;margin-bottom:.4rem}.sum h3 em{color:var(--g1)}.sum p{color:rgba(255,255,255,.7);font-size:.92rem;margin-bottom:1.2rem}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.2rem}.sg div{background:rgba(255,255,255,.08);border-radius:16px;padding:.8rem}.sg small{color:rgba(255,255,255,.6);font-size:.72rem;display:block}.sg b{font-size:1.5rem;letter-spacing:-.04em}
+.sum .btn{width:100%}.sum .rs{margin-top:.8rem;text-align:center;font-size:.85rem;color:rgba(255,255,255,.65);text-decoration:underline}
+#cf{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:9}
+
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.bc{position:relative;border-radius:36px;padding:2rem 2rem 0;overflow:hidden;display:flex;flex-direction:column;min-height:480px;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;transform-style:preserve-3d}
+.bc:hover{box-shadow:0 30px 60px -30px rgba(13,40,24,.55)}
+.bc h3{font-size:clamp(1.9rem,2.8vw,2.8rem);margin-bottom:.8rem}.bc p{max-width:25rem;font-size:1rem}
+.b-g{background:var(--g1);color:var(--g0)}.b-d{background:var(--g0);color:#fff}.b-d p{color:rgba(255,255,255,.72)}.b-p{background:var(--paper);border:1px solid var(--ln)}.b-p p{color:var(--mu)}.b-g p{color:#0e4a26}
+.c7{grid-column:span 7}.c5{grid-column:span 5}.c6{grid-column:span 6}
+.peek{margin:auto auto 0;width:min(74%,260px);height:300px;overflow:hidden;border-radius:30px 30px 0 0;box-shadow:0 -20px 50px -20px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.12);margin-top:1.6rem;background:#17382a}.peek img{width:100%;height:auto}
+.bc.row{flex-direction:row;gap:1.4rem;align-items:stretch}.bc.row>div:first-child{align-self:center;padding-bottom:2rem;flex:1}.bc.row .peek{margin:2rem 0 0;align-self:flex-end;flex:none;width:210px;height:380px}
+.rings{display:flex;gap:1rem;margin-top:1.6rem}.rg{text-align:center;font-size:.72rem;color:rgba(255,255,255,.7)}
+.rg i{--v:0;display:grid;place-items:center;width:84px;aspect-ratio:1;border-radius:50%;background:conic-gradient(var(--g1) calc(var(--v)*1%),rgba(255,255,255,.14) 0);position:relative;font-style:normal;color:#fff;font-weight:700;font-size:1rem;margin-bottom:.4rem}
+.rg i:before{content:"";position:absolute;inset:8px;border-radius:50%;background:var(--g0)}.rg i span{position:relative}
+.ex{font-size:.7rem;opacity:.6;margin-top:.8rem}
+.chart{margin-top:1.4rem;background:rgba(255,255,255,.07);border-radius:22px;padding:1rem 1rem .6rem}
+.chart svg{width:100%;height:auto;display:block}.chart path{fill:none;stroke:var(--g1);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.2s cubic-bezier(.3,.6,.2,1)}.bc.on .chart path{stroke-dashoffset:0}.chart circle{fill:var(--g1);opacity:0;transition:opacity .4s 2s}.bc.on .chart circle{opacity:1}
+.chart small{display:flex;justify-content:space-between;color:rgba(255,255,255,.65);font-size:.72rem}
+.km{font-size:clamp(3.4rem,6vw,5.6rem);letter-spacing:-.06em;line-height:1;font-weight:500;margin:1rem 0 .2rem;font-variant-numeric:tabular-nums}
+
+/* montre */
+.watch{background:var(--g0);color:#fff;border-radius:56px;margin:130px 12px 0;padding:120px 0;overflow:hidden;position:relative;isolation:isolate}
+.watch:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(50% 60% at 78% 50%,rgba(46,204,113,.25),transparent 70%)}
+.wg{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center}
+.watch h2 em{color:var(--g1)}.watch p{color:rgba(255,255,255,.74);font-size:1.1rem;margin:1.4rem 0 1.6rem;max-width:31rem}
+.wl{list-style:none;margin-bottom:2rem}.wl li{padding:.6rem 0 .6rem 1.8rem;border-bottom:1px solid rgba(255,255,255,.14);position:relative}.wl li:before{content:"";position:absolute;left:0;top:1.05rem;width:.9rem;height:.5rem;border-left:2px solid var(--g1);border-bottom:2px solid var(--g1);transform:rotate(-45deg) scale(.8)}
+.wp{position:relative;display:flex;gap:1.4rem;justify-content:center;align-items:center}
+.wp .shot{width:min(240px,42%);border-radius:48px}.wp .shot:nth-child(2){margin-top:70px}
+.pulse{position:absolute;left:50%;top:50%;width:340px;height:340px;border-radius:50%;border:1px solid var(--g1);transform:translate(-50%,-50%);z-index:-1;animation:pl 3s ease-out infinite}.pulse:nth-child(2){animation-delay:1.5s}
+@keyframes pl{from{opacity:.6;transform:translate(-50%,-50%) scale(.5)}to{opacity:0;transform:translate(-50%,-50%) scale(1.5)}}
+
+/* outils */
+.tools{background:var(--paper);border-radius:40px;padding:clamp(1.4rem,3vw,2.8rem);border:1px solid var(--ln)}
+.tt{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:2rem}.tt button{padding:.7rem 1.2rem;border-radius:99px;font-weight:600;font-size:.92rem;border:1px solid var(--ln);color:var(--mu)}.tt button[aria-selected="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tp{display:none;grid-template-columns:1fr 1fr;gap:2.4rem}.tp.on{display:grid}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}.fg label{display:block;font-size:.8rem;color:var(--mu);margin-bottom:.3rem;font-weight:500}.fg .f{grid-column:span 2}
+.fg input,.fg select{width:100%;padding:.85rem 1rem;border-radius:14px;border:1px solid var(--ln);background:#fff;font:inherit;color:var(--ink);outline:0}.fg input:focus,.fg select:focus{border-color:var(--g0);box-shadow:0 0 0 3px rgba(46,204,113,.35)}
+.res{background:var(--g0);color:#fff;border-radius:28px;padding:1.8rem;display:flex;flex-direction:column;justify-content:center;min-height:300px}
+.res small{color:rgba(255,255,255,.65)}.big{font-size:clamp(3.4rem,6vw,5.4rem);letter-spacing:-.06em;line-height:1;font-weight:500;color:var(--g1);font-variant-numeric:tabular-nums}
+.mac{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin:1.2rem 0 1.4rem}.mac div{background:rgba(255,255,255,.08);border-radius:14px;padding:.7rem}.mac b{display:block;font-size:1.3rem;letter-spacing:-.03em}.mac i{display:block;height:4px;border-radius:4px;background:var(--g1);margin-top:.5rem;transition:width .5s}
+.wk{list-style:none;margin:.8rem 0 1.2rem}.wk li{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.14);font-size:.92rem}.wk span{color:rgba(255,255,255,.62);font-size:.82rem;text-align:right}
+.res .btn{align-self:flex-start}.fine{font-size:.78rem;color:var(--mu);margin-top:1rem}
+
+/* et aussi, installer, faq */
+.ft{display:grid;grid-template-columns:.8fr 1.2fr;gap:3rem;align-items:start}
+.fl{display:flex;flex-direction:column;gap:.4rem}.fl button{text-align:left;padding:1.1rem 1.3rem;border-radius:20px;border:1px solid var(--ln);font-size:1.25rem;font-weight:500;letter-spacing:-.03em;transition:background .25s}.fl button[aria-selected="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.fc{background:var(--paper);border:1px solid var(--ln);border-radius:30px;padding:2rem;min-height:340px}.fc ul{list-style:none;columns:2;column-gap:2rem}.fc li{break-inside:avoid;padding:.7rem 0 .7rem 1.8rem;border-bottom:1px solid var(--ln);position:relative}.fc li:before{content:"";position:absolute;left:0;top:1.15rem;width:.9rem;height:.5rem;border-left:2px solid var(--g0);border-bottom:2px solid var(--g0);transform:rotate(-45deg) scale(.8)}
+.pf{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pc{background:var(--paper);border:1px solid var(--ln);border-radius:32px;padding:2rem;display:flex;flex-direction:column;gap:1rem;position:relative;transition:transform .3s,box-shadow .3s}.pc:hover{transform:translateY(-4px);box-shadow:0 24px 48px -28px rgba(13,40,24,.5)}
+.pc h3{font-size:1.9rem}.pc p{color:var(--mu);font-size:.95rem;flex:1}.pc.rec{background:var(--g1);border-color:var(--g1)}.pc.rec p{color:#0b3a1f}
+.rb{position:absolute;top:1.2rem;right:1.2rem;background:var(--g0);color:var(--g1);font-size:.72rem;font-weight:600;padding:.25rem .65rem;border-radius:99px;display:none}.pc.rec .rb{display:block}
+.faq{max-width:820px;margin:0 auto}details{border-bottom:1px solid var(--ln);padding:1.3rem 0}summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem;font-weight:600;font-size:1.1rem;letter-spacing:-.02em}summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-size:1.6rem;line-height:1;transition:transform .3s}details[open] summary:after{transform:rotate(45deg)}details p{color:var(--mu);margin-top:.8rem;max-width:46rem}
+.fcta{display:flex;gap:1rem;align-items:center;justify-content:center;margin-top:2.4rem;flex-wrap:wrap}.fcta span{color:var(--mu)}
+.cta{position:relative;margin:130px 12px 12px;border-radius:56px;background:var(--g1);color:var(--g0);padding:120px 24px;text-align:center;overflow:hidden}
+.cta h2{font-size:clamp(3.2rem,9vw,8.4rem);margin-bottom:1.2rem}.cta p{max-width:32rem;margin:0 auto 2rem;font-size:1.12rem;color:#0b3a1f}.cta .badges{justify-content:center}.cta .sub{margin-top:1.2rem;font-size:.92rem}
+footer{padding:3rem 0 6rem;font-size:.9rem;color:var(--mu)}
+.fg2{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:2rem}.fg2 h4{color:var(--ink);font-size:.9rem;margin-bottom:.8rem}.fg2 a{display:block;padding:.2rem 0}.fg2 a:hover{color:var(--ink);text-decoration:underline}
+.copy{margin-top:2.4rem;padding-top:1.4rem;border-top:1px solid var(--ln);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.82rem}
+.mbar{display:none}
+.rv{opacity:0;transform:translateY(30px);transition:opacity .9s,transform .9s cubic-bezier(.2,.7,.1,1)}.rv.on{opacity:1;transform:none}
+
+@media(max-width:960px){
+  .links{display:none}.hero{padding:112px 0 56px;border-radius:0 0 36px 36px}
+  .hg,.dg,.wg,.tp,.ft{grid-template-columns:1fr}.stage{height:500px;order:-1;margin-bottom:-.5rem}
+  .pp.c{--w:210px;--z:50px}.pp.l,.pp.r{--w:170px}.pp.l{--x:-125px}.pp.r{--x:125px}
+  .fchip{font-size:.74rem;padding:.55rem .75rem}.fc1{right:-2%;top:6%}.fc2{left:-3%;bottom:16%}.fc3{display:none}
+  .hd{flex-direction:column;align-items:start;gap:1.2rem}.sec{padding-top:84px}
+  .bento{grid-template-columns:1fr}.c7,.c5,.c6{grid-column:auto}.bc{min-height:0;border-radius:30px}.bc.row{flex-direction:column}.bc.row .peek{width:min(74%,260px);height:300px;margin:1.6rem auto 0}
+  .watch{border-radius:36px}.wp{margin-top:2rem}.fc ul{columns:1}.pf{grid-template-columns:1fr}.fg2{grid-template-columns:1fr 1fr}.cta{border-radius:36px}
+  .badges img{height:46px}
+  .mbar{display:flex;position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:75;align-items:center;justify-content:space-between;gap:.8rem;padding:.55rem .55rem .55rem 1.1rem;border-radius:99px;background:rgba(13,40,24,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff;border:1px solid rgba(255,255,255,.14);transform:translateY(160%);transition:transform .4s}
+  .mbar.on{transform:none}.mbar small{display:block;color:#9fb5a6;font-size:.75rem;line-height:1.2}.mbar b{font-size:.95rem}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition-duration:.01ms!important}.rv,h1 span,.lead,.hero .badges,.hsub,.hfacts,.stage{opacity:1;transform:none}.pp,.fchip{margin-top:0}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="lg" viewBox="0 0 40 40"><rect width="40" height="40" rx="10" fill="#0d2818"/><path d="M13.1 12.6V28.4M13.1 12.6H26.9M13.1 20.5H24M13.1 28.4H26.9" fill="none" stroke="#2ecc71" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30.6" cy="9.6" r="1.7" fill="#2ecc71"/></symbol></svg>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#top" aria-label="Evolvea, accueil"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="#lg"/></svg>EVOLVEA</a>
+  <nav class="links"><a href="#demo">Démo</a><a href="#fonctionnalites">Fonctionnalités</a><a href="#essayer">Outils</a><a href="#faq">Questions</a></nav>
+  <a class="btn g sm" href="#installer" data-smart="short" data-cta="nav" data-magnet>Télécharger</a>
+</header>
+
+<main id="top">
+<section class="hero" id="hero">
+  <div class="glow" id="glow" aria-hidden="true"></div>
+  <div class="wrap hg">
+    <div>
+      <h1><span style="--i:0">Muscu,</span> <span style="--i:1">cardio,</span> <span style="--i:2">nutrition.</span> <em><span style="--i:3">Tout</span> <span style="--i:4">au</span> <span style="--i:5">même</span> <span style="--i:6">endroit.</span></em></h1>
+      <p class="lead">Evolvea est une app gratuite et sans pub pour la musculation, le cardio et la nutrition. Tu notes tes séries, l’app calcule tes progrès. Sur iPhone, Apple Watch, Android et dans ton navigateur.</p>
+      <div class="badges">
+        <a href="https://apps.apple.com/app/id6797883219" data-cta="hero-appstore" rel="noopener"><img src="https://evolvea.fit/img/fr/badge-app-store.svg" alt="Télécharger dans l’App Store" width="160" height="50"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.evolvea.app&hl=fr" data-cta="hero-play" rel="noopener"><img src="https://evolvea.fit/img/fr/badge-google-play.png" alt="Disponible sur Google Play" width="168" height="50"></a>
+      </div>
+      <p class="hsub">Sur ordinateur, <a href="https://app.evolvea.fit" data-cta="hero-web" rel="noopener">ouvre la version web</a>, rien à installer. Ou <a href="#demo">essaie la démo juste en dessous ↓</a></p>
+      <div class="hfacts"><div><b>0 €</b>pas d’abonnement</div><div><b>0 pub</b>jamais</div><div><b>4,5 M</b>de produits à scanner</div><div><b>13</b>langues</div></div>
+    </div>
+    <div class="stage" id="stage"><div class="cl" id="cl">
+      <div class="pp l"><div class="shot"><img src="https://evolvea.fit/img/fr/shot_seance.jpg" alt="Résumé d’une séance jambes dans Evolvea" loading="lazy"></div></div>
+      <div class="pp r"><div class="shot"><img src="https://evolvea.fit/img/fr/shot_nutrition.jpg" alt="Journal nutrition Evolvea : calories et macros du jour" loading="lazy"></div></div>
+      <div class="pp c"><div class="shot"><img src="https://evolvea.fit/img/fr/shot_accueil.jpg" alt="Accueil d’Evolvea : bouton pour démarrer une séance, calendrier d’intensité de la semaine, série de jours d’affilée et rapport hebdomadaire" fetchpriority="high"></div></div>
+    </div>
+    <div class="fchip fc1"><small>Pendant la séance</small><b>Repos : 1:30</b></div>
+    <div class="fchip pr fc2"><small>Record détecté</small><b>Nouveau 1RM estimé</b></div>
+    <div class="fchip fc3"><small>Scan code-barres</small><b>4,5 M de produits</b></div></div>
+  </div>
+</section>
+
+<div class="marq" aria-hidden="true"><div class="track"><span>Séries et repos auto</span><em>Scan code-barres</em><span>Course en GPS</span><em>Apple Watch</em><span>Records en direct</span><em>1RM estimé</em><span>Hydratation</span><em>Entre amis</em><span>Séries et repos auto</span><em>Scan code-barres</em><span>Course en GPS</span><em>Apple Watch</em><span>Records en direct</span><em>1RM estimé</em><span>Hydratation</span><em>Entre amis</em></div></div>
+
+<section class="sec wrap" id="demo">
+  <div class="dg">
+    <div class="rv">
+      <h2>Essaie Evolvea,<br><em>ici et maintenant.</em></h2>
+      <p class="lead2">Une séance de développé couché, jouable dans la page. Règle tes charges, valide tes séries et regarde le repos, le volume et les records se calculer tout seuls.</p>
+      <ol class="steps"><li>Ajuste la charge et les répétitions</li><li>Valide ta première série : le repos démarre</li><li>Bats ton record pour le voir détecté en direct</li></ol>
+      <p class="fine" style="margin:0">Simulation simplifiée à but de démonstration. L’app complète ajoute vidéos tuto, historique et programmes.</p>
+    </div>
+    <div class="rv"><div class="dm"><div class="dscr" id="dscr">
+      <canvas id="cf" aria-hidden="true"></canvas>
+      <div class="dh"><div><b>Développé couché</b><small>Push · Pectoraux, épaules, triceps</small></div><span class="tag" id="dtag">Série 1/3</span></div>
+      <div class="dst"><div><small>Volume</small><b id="dv">0 kg</b></div><div><small>1RM estimé</small><b id="dr">80 kg</b></div><div><small>Durée</small><b id="dt">0:00</b></div></div>
+      <div class="sh"><span>#</span><span>Charge</span><span>Reps</span><span></span></div>
+      <div id="sets"></div>
+      <p class="dnote">Ton record actuel : 80 kg de 1RM estimé</p>
+      <div class="rest" id="rest"><small>Repos (démo accélérée)</small><div class="ring"><svg viewBox="0 0 160 160"><circle class="bg" cx="80" cy="80" r="70"/><circle class="fg" id="rfg" cx="80" cy="80" r="70"/></svg><b id="rt">15</b></div><button class="btn g" id="rskip">Passer le repos</button></div>
+      <div class="sum" id="sum"><h3>Séance <em>terminée.</em></h3><p id="sump">Bien joué.</p><div class="sg"><div><small>Volume</small><b id="sv">—</b></div><div><small>Durée</small><b id="sd">—</b></div><div><small>Records</small><b id="sr">—</b></div><div><small>Muscles</small><b style="font-size:1rem;letter-spacing:0">Pecs, triceps</b></div></div><a class="btn g" href="https://app.evolvea.fit" data-smart="long" data-cta="demo-end" rel="noopener">Garder mes séances ↗</a><button class="rs" id="again">Rejouer la démo</button></div>
+    </div></div></div>
+  </div>
+</section>
+
+<section class="sec wrap" id="fonctionnalites">
+  <div class="hd rv"><h2>Tout ce que tu fais,<br><em>enfin réuni.</em></h2><p>Fini les cinq apps et les tableurs. Une seule app, qui sait où tu en es.</p></div>
+  <div class="bento">
+    <article class="bc row b-g c7" data-tilt><div><h3>Chaque séance, <em>détaillée.</em></h3><p>Le timer de repos part tout seul dès que tu valides une série. À la fin, ta séance est résumée : volume, durée, muscles travaillés. Chaque exercice a sa vidéo tuto et ses consignes.</p><a class="btn sm" style="margin-top:1.4rem" href="https://app.evolvea.fit" data-smart="long" data-cta="bento-seance" rel="noopener">Essayer gratuitement ↗</a></div><div class="peek"><img src="https://evolvea.fit/img/fr/shot_seance.jpg" alt="Résumé d’une séance jambes : séries, volume, durée, muscles travaillés et consignes du squat" loading="lazy"></div></article>
+    <article class="bc b-d c5" data-tilt><h3>Tes repas en <em style="color:var(--g1)">un scan.</em></h3><p>Code-barres parmi plus de 4,5 millions de produits, ou photo de ton assiette : l’IA estime le repas. Calories et macros comptées aussitôt.</p><div class="rings" data-rings><div class="rg"><i data-ring="82"><span>82%</span></i>Calories</div><div class="rg"><i data-ring="68"><span>68%</span></i>Protéines</div><div class="rg"><i data-ring="55"><span>55%</span></i>Glucides</div></div><p class="ex">Exemple de journée</p><div class="peek" style="height:240px"><img src="https://evolvea.fit/img/fr/shot_nutrition.jpg" alt="Journal nutrition : calories et macros du jour, scan code-barres, scan photo IA et hydratation" loading="lazy"></div></article>
+    <article class="bc b-d c5" data-tilt data-chart><h3>Une courbe <em style="color:var(--g1)">par exercice.</em></h3><p>Ta charge actuelle et ta progression depuis le début. Ton 1RM est estimé à partir de tes séries, et tes records sont repérés pendant la séance, pas le lendemain.</p><div class="chart"><svg viewBox="0 0 300 110" role="img" aria-label="Exemple de courbe de progression"><path pathLength="1" d="M8 96 C40 92 56 84 84 80 S130 70 152 62 S196 50 214 40 S262 24 292 14"/><circle cx="292" cy="14" r="5"/><circle cx="152" cy="62" r="4"/></svg><small><span>Début</span><span>Exemple de progression</span><span>Aujourd’hui</span></small></div><div class="peek" style="height:210px"><img src="https://evolvea.fit/img/fr/shot_progression.jpg" alt="Courbes de progression : développé couché, squat et soulevé de terre" loading="lazy"></div></article>
+    <article class="bc row b-p c7" data-tilt><div><h3>Tes kilomètres <em>s’additionnent.</em></h3><p>Course ou vélo : le GPS trace ton parcours avec distance, allure, durée et dénivelé. Evolvea traduit ton compteur en distances qui parlent : ton premier semi-marathon, puis Paris-Marseille… et pourquoi pas, un jour, le tour de la Terre.</p><div class="km" data-count="1284">0</div><p class="ex" style="color:var(--mu)">kilomètres cumulés (exemple)</p></div><div class="peek"><img src="https://evolvea.fit/img/fr/shot_cardio.jpg" alt="Suivi cardio : kilomètres de la semaine, du mois et au total, et courbe de distance cumulée" loading="lazy"></div></article>
+    <article class="bc row b-g c12" style="grid-column:span 12" data-tilt><div><h3>À plusieurs, <em>on lâche moins.</em></h3><p>Partage tes séances et tes records sur le fil, commente ceux de tes amis et écrivez-vous en privé. La flamme s’allume quand vous vous entraînez tous les deux.</p><a class="btn sm" style="margin-top:1.4rem" href="https://app.evolvea.fit" data-smart="long" data-cta="bento-commu" rel="noopener">Rejoindre Evolvea ↗</a></div><div class="peek"><img src="https://evolvea.fit/img/fr/shot_communaute.jpg" alt="Fil de la communauté : messages d’encouragement, likes, commentaires et onglets Amis et Messages" loading="lazy"></div></article>
+  </div>
+</section>
+
+<section class="watch" id="montre"><div class="wrap wg">
+  <div class="rv"><h2>La séance <em>au poignet.</em></h2><p>L’app Apple Watch, en bêta, affiche ton programme : exercice, série, reps et charge. Tu valides d’un tap et le repos démarre.</p>
+    <ul class="wl"><li>Course en GPS sans iPhone : allure, fréquence cardiaque et calories en direct</li><li>Tout revient dans l’app ensuite</li><li>Garmin, Samsung ou Fitbit : tes séances arrivent via Apple Santé ou Santé Connect</li></ul>
+    <a class="btn g" href="https://apps.apple.com/app/id6797883219" data-cta="watch-appstore" rel="noopener">Télécharger sur l’App Store</a></div>
+  <div class="wp rv"><span class="pulse"></span><span class="pulse"></span><div class="shot"><img src="https://evolvea.fit/img/fr/watch_serie.jpg" alt="Evolvea sur Apple Watch : série de développé couché, 8 reps à 60 kg, à valider au poignet" loading="lazy"></div><div class="shot"><img src="https://evolvea.fit/img/fr/watch_course.jpg" alt="Course GPS sur Apple Watch avec Evolvea : durée, distance, allure, fréquence cardiaque et calories" loading="lazy"></div></div>
+</div></section>
+
+<section class="sec wrap" id="essayer">
+  <div class="hd rv"><h2>Trois outils,<br><em>zéro compte.</em></h2><p>Les mêmes calculs que dans l’app. Résultat immédiat, aucune inscription.</p></div>
+  <div class="tools rv">
+    <div class="tt" role="tablist" aria-label="Outils"><button role="tab" aria-selected="true" data-t="0">Objectif calories</button><button role="tab" aria-selected="false" data-t="1">1RM estimé</button><button role="tab" aria-selected="false" data-t="2">Programme en 1 minute</button></div>
+    <div class="tp on"><div><div class="fg">
+      <div><label for="sx">Sexe</label><select id="sx"><option value="h">Homme</option><option value="f">Femme</option></select></div><div><label for="ag">Âge</label><input id="ag" type="number" value="28" min="14" max="90" inputmode="numeric"></div>
+      <div><label for="ht">Taille (cm)</label><input id="ht" type="number" value="176" min="120" max="230" inputmode="numeric"></div><div><label for="wt">Poids (kg)</label><input id="wt" type="number" value="75" min="35" max="250" inputmode="decimal"></div>
+      <div class="f"><label for="ac">Niveau d’activité</label><select id="ac"><option value="1.2">Sédentaire (peu ou pas de sport)</option><option value="1.375">Léger (1 à 3 séances / semaine)</option><option value="1.55" selected>Modéré (3 à 5 séances / semaine)</option><option value="1.725">Intense (6 à 7 séances / semaine)</option></select></div>
+      <div class="f"><label for="gl">Ton but</label><select id="gl"><option value=".85">Perdre du poids</option><option value="1" selected>Maintenir mon poids</option><option value="1.1">Prendre de la masse</option></select></div></div>
+      <p class="fine">Estimation avec la formule de Harris-Benedict, ajustée selon ton but : environ −15 % pour perdre du poids, +10 % pour en prendre. Macros : 2 g de protéines et 1 g de lipides par kilo, le reste en glucides. Dans l’app, tout reste modifiable à la main.</p></div>
+      <div class="res"><small>Ton objectif quotidien</small><div class="big" id="kc">—</div><small>kcal par jour</small><div class="mac"><div><small>Protéines</small><b id="mp">—</b><i style="width:100%"></i></div><div><small>Glucides</small><b id="mg">—</b><i style="width:100%"></i></div><div><small>Lipides</small><b id="ml">—</b><i style="width:100%"></i></div></div><a class="btn g" href="https://app.evolvea.fit" data-smart="long" data-cta="tool-kcal" rel="noopener">Suivre ça dans Evolvea ↗</a></div></div>
+    <div class="tp"><div><div class="fg"><div><label for="rw">Charge soulevée (kg)</label><input id="rw" type="number" value="80" min="1" max="500" inputmode="decimal"></div><div><label for="rr">Répétitions</label><input id="rr" type="number" value="6" min="1" max="20" inputmode="numeric"></div></div><p class="fine">Formule d’Epley : tu n’as pas besoin de tester ton vrai maximum, ce qui serait risqué sans partenaire. Plus la série est courte (10 reps ou moins), plus l’estimation est fiable.</p></div>
+      <div class="res"><small>Ton 1RM estimé</small><div class="big" id="rm">—</div><small>kg</small><ul class="wk" id="rl"></ul><a class="btn g" href="https://app.evolvea.fit" data-smart="long" data-cta="tool-1rm" rel="noopener">Suivre mes records ↗</a></div></div>
+    <div class="tp"><div><div class="fg">
+      <div><label for="pl">Où t’entraînes-tu ?</label><select id="pl"><option value="s">À la salle</option><option value="m">À la maison (poids du corps)</option></select></div><div><label for="pn">Séances par semaine</label><select id="pn"><option>2</option><option selected>3</option><option>4</option><option>5</option></select></div>
+      <div><label for="pd">Durée d’une séance</label><select id="pd"><option value="4">30 min</option><option value="5" selected>45 min</option><option value="6">60 min</option><option value="7">75 min</option></select></div><div><label for="pz">Zone à travailler</label><select id="pz"><option value="t">Tout le corps</option><option value="h">Haut du corps</option><option value="b">Bas du corps</option></select></div></div>
+      <p class="fine">Aperçu : dans l’app, Evolvea adapte ta semaine à ton matériel et chaque séance reste modifiable. Tu peux aussi recevoir un rappel une heure avant.</p></div>
+      <div class="res"><small>Ta semaine type</small><ul class="wk" id="wk"></ul><a class="btn g" href="https://app.evolvea.fit" data-smart="long" data-cta="tool-prog" rel="noopener">Créer mon vrai programme ↗</a></div></div>
+  </div>
+</section>
+
+<section class="sec wrap">
+  <div class="hd rv"><h2>Et aussi,<br><em>pour tout le reste.</em></h2><p>Des détails pensés pour que tu t’entraînes plus, pas pour que tu configures plus.</p></div>
+  <div class="ft rv"><div class="fl" role="tablist" aria-label="Catégories"><button role="tab" aria-selected="true">À la salle</button><button role="tab" aria-selected="false">Dehors</button><button role="tab" aria-selected="false">Dans l’assiette</button><button role="tab" aria-selected="false">Partout</button></div><div class="fc" id="fc"></div></div>
+</section>
+
+<section class="sec wrap" id="installer">
+  <div class="hd rv"><h2>Installe Evolvea.<br><em>C’est gratuit.</em></h2><p>Crée ton compte une fois, tu retrouves tes données sur tous tes appareils.</p></div>
+  <div class="pf">
+    <div class="pc rv" id="pc-ios"><span class="rb">Recommandé pour toi</span><h3>iPhone, iPad et Apple Watch</h3><p>iOS 16 ou plus récent.</p><a href="https://apps.apple.com/app/id6797883219" data-cta="install-appstore" rel="noopener"><img src="https://evolvea.fit/img/fr/badge-app-store.svg" alt="Télécharger dans l’App Store" height="48" width="160" loading="lazy" style="height:48px;width:auto"></a></div>
+    <div class="pc rv" id="pc-and"><span class="rb">Recommandé pour toi</span><h3>Android</h3><p>Android 7 ou plus récent.</p><a href="https://play.google.com/store/apps/details?id=com.evolvea.app&hl=fr" data-cta="install-play" rel="noopener"><img src="https://evolvea.fit/img/fr/badge-google-play.png" alt="Disponible sur Google Play" height="48" width="162" loading="lazy" style="height:48px;width:auto"></a></div>
+    <div class="pc rv" id="pc-web"><span class="rb">Recommandé pour toi</span><h3>Navigateur</h3><p>Sur ordinateur ou sur mobile, sans rien installer.</p><a class="btn" href="https://app.evolvea.fit" data-cta="install-web" rel="noopener" style="align-self:flex-start">Ouvrir la version web ↗</a></div>
+  </div>
+</section>
+
+<section class="sec wrap" id="faq">
+  <div class="hd rv"><h2>Des questions ?<br><em>Voilà les réponses.</em></h2></div>
+  <div class="faq rv">
+    <details open><summary>Evolvea est-il vraiment gratuit ?</summary><p>Oui. Pas d’abonnement, pas de publicité, et aucune fonction réservée à une version payante. Seul le scan photo IA a une limite : 2 scans par jour, et le parrainage permet d’en débloquer davantage.</p></details>
+    <details><summary>Sur quels appareils Evolvea fonctionne-t-il ?</summary><p>Sur iPhone et iPad (iOS 16 minimum), sur Apple Watch, sur Android (Android 7 minimum) et dans ton navigateur sur app.evolvea.fit. Ton compte est le même partout et tes données se synchronisent entre tes appareils.</p></details>
+    <details><summary>Je débute, Evolvea peut-il me créer un programme ?</summary><p>Oui. Réponds à quelques questions : salle ou maison, nombre de séances par semaine, durée de chaque séance (de 30 à 75 minutes) et zone à travailler. Evolvea crée ta semaine d’entraînement en une minute. Chaque séance reste modifiable, et tu peux recevoir un rappel une heure avant.</p></details>
+    <details><summary>Evolvea fonctionne-t-il sur Apple Watch ?</summary><p>Oui, avec une app Apple Watch (en bêta). Elle enregistre tes courses en GPS sans iPhone, avec fréquence cardiaque, allure et calories, et te guide pendant tes séances de muscu : séries, reps, charges et repos au poignet.</p></details>
+    <details><summary>J’ai une Garmin, une Samsung ou une Fitbit, ça marche ?</summary><p>Oui, pour retrouver tes séances dans Evolvea. Il n’y a pas d’app Evolvea sur ces montres, mais les séances qu’elles enregistrent arrivent toutes seules dans ton historique, via Apple Santé sur iPhone ou Santé Connect sur Android (Android 14 minimum). Une seule étape : autoriser l’app de ta montre à envoyer ses activités vers Santé ou Santé Connect.</p></details>
+    <details><summary>Comment fonctionne le scan photo des repas ?</summary><p>Tu prends ton assiette en photo et l’IA estime les aliments, les quantités, les calories et les macros. Tu peux tout corriger avant d’enregistrer. La photo est envoyée à Google (Gemini) pour l’analyse, sans aucune donnée de ton compte, et elle n’est pas conservée. Le scan de code-barres et la recherche d’aliments restent illimités.</p></details>
+    <details><summary>La base d’aliments est-elle fiable ?</summary><p>Evolvea s’appuie sur Open Food Facts, la plus grande base ouverte d’aliments au monde : plus de 4,5 millions de produits, dont plus d’un million vendus en France. Comme dans toute base collaborative, une fiche peut contenir une erreur : dans l’app, tu peux corriger les valeurs et proposer la correction à Open Food Facts. Pour ce qui n’a pas d’emballage, Evolvea intègre en plus 284 aliments de base.</p></details>
+    <details><summary>Mes données sont-elles sauvegardées ? Ça marche sans internet ?</summary><p>Oui aux deux. Tu te connectes par e-mail, avec Google ou avec Apple, et tes données sont sauvegardées en ligne. Tu peux enregistrer tes séances hors connexion : tout se synchronise dès que tu retrouves internet. Tu peux supprimer ton compte à tout moment depuis ton profil.</p></details>
+    <div class="fcta"><span>Prêt à essayer ?</span><a class="btn" href="https://app.evolvea.fit" data-smart="long" data-cta="faq" rel="noopener" data-magnet>Télécharger gratuitement</a></div>
+  </div>
+</section>
+
+<section class="cta" id="final">
+  <h2>Évolue, un jour <em>après l’autre.</em></h2>
+  <p>Musculation, cardio et nutrition dans une app gratuite et sans pub. Installe-la en moins d’une minute.</p>
+  <div class="badges"><a href="https://apps.apple.com/app/id6797883219" data-cta="final-appstore" rel="noopener"><img src="https://evolvea.fit/img/fr/badge-app-store.svg" alt="Télécharger dans l’App Store" height="54" width="173" loading="lazy" style="height:54px;width:auto"></a><a href="https://play.google.com/store/apps/details?id=com.evolvea.app&hl=fr" data-cta="final-play" rel="noopener"><img src="https://evolvea.fit/img/fr/badge-google-play.png" alt="Disponible sur Google Play" height="54" width="182" loading="lazy" style="height:54px;width:auto"></a></div>
+  <p class="sub">Ou <a href="https://app.evolvea.fit" data-cta="final-web" rel="noopener" style="font-weight:600;text-decoration:underline">ouvre la version web</a>, rien à installer.</p>
+</section>
+</main>
+
+<footer class="wrap"><div class="fg2">
+  <div><div class="logo" style="color:var(--ink)"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="#lg"/></svg>EVOLVEA</div><p style="margin-top:.8rem;max-width:18rem">Évolue, un jour après l’autre. Musculation, cardio et nutrition dans une app gratuite et sans pub.</p></div>
+  <div><h4>L’app</h4><a href="https://apps.apple.com/app/id6797883219">App Store</a><a href="https://play.google.com/store/apps/details?id=com.evolvea.app&hl=fr">Google Play</a><a href="https://app.evolvea.fit">Version web</a><a href="https://evolvea.fit/a-propos/">Qui sommes-nous</a></div>
+  <div><h4>Légal</h4><a href="https://privacy.evolvea.fit">Politique de confidentialité</a><a href="https://cgu.evolvea.fit">CGU</a><a href="https://mentions-legales.evolvea.fit">Mentions légales</a></div>
+  <div><h4>Suis-nous</h4><a href="https://www.instagram.com/evolvea_fr">Instagram</a><a href="https://www.tiktok.com/@evolvea_fr">TikTok</a><a href="https://www.facebook.com/share/1HRPQZ4aGv/?mibextid=wwXIfr">Facebook</a><a href="https://evolvea.fit/en/">English · Español · Deutsch · 13 langues</a></div>
+</div><div class="copy"><span>© 2026 Evolvea</span><a href="#top">Retour en haut ↑</a></div></footer>
+
+<div class="mbar" id="mbar"><div><b>Evolvea</b><small>Gratuit · sans pub</small></div><a class="btn g sm" href="#installer" data-smart="long" data-cta="sticky-mobile">Télécharger</a></div>
+
+<script>
+(function(){
+var $=function(s,c){return(c||document).querySelector(s)},$$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+var RM=matchMedia('(prefers-reduced-motion:reduce)').matches,FINE=matchMedia('(hover:hover) and (pointer:fine)').matches;
+var ST='https://apps.apple.com/app/id6797883219',PL='https://play.google.com/store/apps/details?id=com.evolvea.app&hl=fr',WEB='https://app.evolvea.fit';
+var ua=navigator.userAgent,ios=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),and=/Android/.test(ua);
+window.dataLayer=window.dataLayer||[];
+
+/* CTA intelligents selon l’appareil */
+$$('[data-smart]').forEach(function(a){var s=a.dataset.smart==='short';
+ if(ios){a.href=ST;a.textContent=s?'App Store':'Installer sur iPhone'}else if(and){a.href=PL;a.textContent=s?'Google Play':'Installer sur Android'}else if(!s){a.href=WEB;a.target='_blank';a.rel='noopener'}});
+$(ios?'#pc-ios':and?'#pc-and':'#pc-web').classList.add('rec');
+document.addEventListener('click',function(e){var a=e.target.closest('[data-cta]');if(a)window.dataLayer.push({event:'cta_click',cta:a.dataset.cta,href:a.getAttribute('href')})});
+
+/* nav : thème selon la section, progression */
+var nav=$('#nav'),hero=$('#hero'),mb=$('#mbar'),hid=false;
+function onScroll(){var y=scrollY,hb=hero.getBoundingClientRect().bottom;nav.style.setProperty('--p',y/(document.documentElement.scrollHeight-innerHeight)*100+'%');nav.classList.toggle('lt',hb<60&&!document.elementFromPoint(innerWidth/2,40).closest('.watch,.cta'));mb.classList.toggle('on',y>innerHeight*.7&&!hid)}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+var vio=new IntersectionObserver(function(es){es.forEach(function(e){hid=e.isIntersecting;onScroll()})});vio.observe($('#installer'));vio.observe($('#final'));
+
+/* hero : lueur qui suit la souris, cluster 3D */
+if(FINE&&!RM){var gl=$('#glow'),cl=$('#cl');
+ hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();gl.style.setProperty('--mx',(e.clientX-r.left)+'px');gl.style.setProperty('--my',(e.clientY-r.top)+'px');var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;cl.style.setProperty('--ry',(x*16)+'deg');cl.style.setProperty('--rx',(-y*10)+'deg')});
+ hero.addEventListener('pointerleave',function(){cl.style.setProperty('--ry','0deg');cl.style.setProperty('--rx','0deg')});
+ /* boutons magnétiques et cartes inclinables */
+ $$('[data-magnet]').forEach(function(b){b.addEventListener('pointermove',function(e){var r=b.getBoundingClientRect();b.style.transform='translate('+((e.clientX-r.left-r.width/2)*.18)+'px,'+((e.clientY-r.top-r.height/2)*.28)+'px)'});b.addEventListener('pointerleave',function(){b.style.transform=''})});
+ $$('[data-tilt]').forEach(function(c){c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='perspective(1000px) rotateY('+(x*4)+'deg) rotateX('+(-y*4)+'deg) translateY(-4px)'});c.addEventListener('pointerleave',function(){c.style.transform=''})})}
+
+/* compteurs, anneaux, courbe : au scroll */
+function ease(t){return 1-Math.pow(1-t,3)}
+function run(d,fn){if(RM){fn(1);return}var s=performance.now();(function f(n){var p=Math.min(1,(n-s)/d);fn(ease(p));if(p<1)requestAnimationFrame(f)})(s)}
+var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var t=e.target;t.classList.add('on');
+ $$('[data-count]',t).concat(t.dataset.count?[t]:[]).forEach(function(c){var to=+c.dataset.count;run(1600,function(p){c.textContent=Math.round(to*p).toLocaleString('fr-FR')})});
+ $$('[data-ring]',t).forEach(function(r){var to=+r.dataset.ring;run(1500,function(p){r.style.setProperty('--v',to*p)})});ro.unobserve(t)})},{threshold:.2});
+$$('.rv,.bc').forEach(function(e){ro.observe(e)});
+
+/* démo interactive de séance */
+var BEST=80,sets=[{w:60,r:10,d:0},{w:62.5,r:8,d:0},{w:65,r:6,d:0}],t0=0,tm,rt,left=0,prs=0,bestNow=BEST;
+var RN=15,fg=$('#rfg');
+var e1=function(w,r){return w*(1+r/30)};
+function fmtT(s){return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0')}
+function stats(){var v=0,b=BEST;sets.forEach(function(s){if(s.d){v+=s.w*s.r;b=Math.max(b,e1(s.w,s.r))}});$('#dv').textContent=Math.round(v).toLocaleString('fr-FR')+' kg';$('#dr').textContent=(Math.round(b*2)/2).toLocaleString('fr-FR')+' kg';var n=sets.filter(function(s){return s.d}).length;$('#dtag').textContent=n>=3?'Terminé':'Série '+(n+1)+'/3'}
+function draw(){var nx=sets.findIndex(function(s){return !s.d});$('#sets').innerHTML=sets.map(function(s,i){return'<div class="sr '+(s.d?'done':'')+'" data-i="'+i+'"><span class="n">'+(i+1)+'</span><label><input type="number" inputmode="decimal" step="2.5" min="0" value="'+s.w+'" data-k="w" aria-label="Charge série '+(i+1)+'" '+(s.d?'disabled':'')+'><small>kg</small></label><label><input type="number" inputmode="numeric" min="1" value="'+s.r+'" data-k="r" aria-label="Répétitions série '+(i+1)+'" '+(s.d?'disabled':'')+'><small>reps</small></label><button class="ok" data-v="'+i+'" aria-label="Valider la série '+(i+1)+'" '+(s.d||i!==nx?'disabled':'')+'>'+(s.d?'✓':'')+(s.pr?'':'')+'</button></div>'}).join('');stats()}
+$('#sets').addEventListener('input',function(e){var t=e.target;if(t.dataset.k){var i=+t.closest('.sr').dataset.i;sets[i][t.dataset.k]=parseFloat(t.value)||0}});
+$('#sets').addEventListener('click',function(e){var b=e.target.closest('[data-v]');if(!b||b.disabled)return;validate(+b.dataset.v)});
+function validate(i){var s=sets[i];if(!(s.w>0&&s.r>0))return;s.d=1;if(!t0){t0=Date.now();tm=setInterval(function(){$('#dt').textContent=fmtT((Date.now()-t0)/1000)},500)}
+ var est=e1(s.w,s.r);if(est>bestNow+.01){bestNow=est;prs++;s.pr=1;confetti();$('#dtag').textContent='Record !'}draw();
+ if(s.pr){var row=$$('.sr')[i].querySelector('.n');row.innerHTML='<span class="pr-b">PR</span>'}
+ if(sets.every(function(x){return x.d}))finish();else rest()}
+function rest(){left=RN;$('#rest').classList.add('on');tick();clearInterval(rt);rt=setInterval(function(){left--;tick();if(left<=0)endRest()},1000)}
+function tick(){$('#rt').textContent=left;fg.style.strokeDashoffset=440*(1-left/RN)}
+function endRest(){clearInterval(rt);$('#rest').classList.remove('on');fg.style.strokeDashoffset=0}
+$('#rskip').onclick=endRest;
+function finish(){clearInterval(tm);var v=0;sets.forEach(function(s){v+=s.w*s.r});var el=(Date.now()-t0)/1000;$('#sv').textContent=Math.round(v).toLocaleString('fr-FR')+' kg';$('#sd').textContent=fmtT(el);$('#sr').textContent=prs?prs+' PR':'0';$('#sump').textContent=prs?'Nouveau record détecté pendant la séance, pas le lendemain.':'Séance enregistrée : volume, durée et muscles travaillés.';setTimeout(function(){$('#sum').classList.add('on')},prs?900:300)}
+$('#again').onclick=function(){clearInterval(tm);endRest();t0=0;prs=0;bestNow=BEST;sets=[{w:60,r:10,d:0},{w:62.5,r:8,d:0},{w:65,r:6,d:0}];$('#dt').textContent='0:00';$('#sum').classList.remove('on');draw()}
+draw();
+function confetti(){if(RM)return;var c=$('#cf'),r=$('#dscr').getBoundingClientRect();c.width=r.width;c.height=r.height;var g=c.getContext('2d'),P=[],i;for(i=0;i<70;i++)P.push({x:r.width/2,y:r.height*.45,vx:(Math.random()-.5)*10,vy:-Math.random()*9-3,s:4+Math.random()*5,c:['#2ecc71','#0d2818','#a8f0c6','#fff'][i%4],a:Math.random()*6});
+ (function f(){g.clearRect(0,0,c.width,c.height);var n=0;P.forEach(function(p){p.vy+=.35;p.x+=p.vx;p.y+=p.vy;p.a+=.2;if(p.y<c.height+20){n++;g.save();g.translate(p.x,p.y);g.rotate(p.a);g.fillStyle=p.c;g.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);g.restore()}});if(n)requestAnimationFrame(f);else g.clearRect(0,0,c.width,c.height)})()}
+
+/* outils */
+$$('.tt button').forEach(function(b){b.onclick=function(){$$('.tt button').forEach(function(x){x.setAttribute('aria-selected',x===b)});$$('.tp').forEach(function(p,i){p.classList.toggle('on',i===+b.dataset.t)})}});
+var n=function(id){return parseFloat($('#'+id).value)};
+function kcal(){var w=n('wt'),h=n('ht'),a=n('ag');if(!(w>0&&h>0&&a>0))return;var bmr=$('#sx').value==='h'?88.362+13.397*w+4.799*h-5.677*a:447.593+9.247*w+3.098*h-4.33*a,k=Math.round(bmr*n('ac')*n('gl')/10)*10,p=Math.round(2*w),l=Math.round(w),c=Math.max(0,Math.round((k-p*4-l*9)/4));
+ $('#kc').textContent=k.toLocaleString('fr-FR');$('#mp').textContent=p+' g';$('#mg').textContent=c+' g';$('#ml').textContent=l+' g';var t=p*4+c*4+l*9||1,m=$$('.mac i');m[0].style.width=p*4/t*100+'%';m[1].style.width=c*4/t*100+'%';m[2].style.width=l*9/t*100+'%'}
+function orm(){var w=n('rw'),r=n('rr');if(!(w>0&&r>0))return;var o=e1(w,r);$('#rm').textContent=(Math.round(o*2)/2).toLocaleString('fr-FR');$('#rl').innerHTML=[95,90,85,80,75,70].map(function(p){return'<li>'+p+' % <span>'+(Math.round(o*p/100*2)/2).toLocaleString('fr-FR')+' kg</span></li>'}).join('')}
+var EX={s:{Push:['Développé couché','Développé incliné haltères','Développé militaire','Élévations latérales','Triceps à la poulie','Dips','Écartés poulies','Extension triceps'],Pull:['Tractions ou tirage vertical','Rowing barre','Tirage horizontal','Face pull','Curl haltères','Curl marteau','Rowing haltère','Shrugs'],Legs:['Squat','Presse à cuisses','Soulevé de terre roumain','Fentes marchées','Leg curl','Mollets debout','Leg extension','Hip thrust'],Full:['Squat','Développé couché','Rowing barre','Développé militaire','Soulevé de terre roumain','Curl biceps','Triceps à la poulie','Gainage'],Haut:['Développé couché','Tractions ou tirage vertical','Développé militaire','Rowing haltère','Élévations latérales','Curl biceps','Triceps à la poulie','Face pull'],Bas:['Squat','Soulevé de terre roumain','Presse à cuisses','Fentes marchées','Leg curl','Hip thrust','Mollets debout','Gainage']},
+ m:{Push:['Pompes','Pompes déclinées','Pike push-ups','Dips sur chaise','Pompes diamant','Gainage','Planche latérale','Burpees'],Pull:['Tractions australiennes','Rowing serviette','Superman','Curl au poids du corps','Gainage dorsal','Tractions','Face pull élastique','Gainage'],Legs:['Squats','Fentes','Squat bulgare','Pont fessier','Montées de banc','Squat sauté','Mollets','Chaise murale'],Full:['Squats','Pompes','Tractions australiennes','Fentes','Pike push-ups','Pont fessier','Gainage','Burpees'],Haut:['Pompes','Tractions australiennes','Pike push-ups','Dips sur chaise','Superman','Pompes diamant','Gainage','Planche latérale'],Bas:['Squats','Fentes','Squat bulgare','Pont fessier','Montées de banc','Mollets','Chaise murale','Squat sauté']}};
+function prog(){var N=+$('#pn').value,d=+$('#pd').value,pl=$('#pl').value,z=$('#pz').value,sp;
+ if(z==='h')sp=['Haut A','Haut B','Haut C','Haut D'].slice(0,N);else if(z==='b')sp=['Bas A','Bas B','Bas C','Bas D'].slice(0,N);else sp={2:['Full','Full'],3:['Push','Pull','Legs'],4:['Haut','Bas','Haut','Bas'],5:['Push','Pull','Legs','Haut','Bas']}[N];
+ var days={2:['Lundi','Jeudi'],3:['Lundi','Mercredi','Vendredi'],4:['Lundi','Mardi','Jeudi','Vendredi'],5:['Lundi','Mardi','Mercredi','Vendredi','Samedi']}[N];
+ $('#wk').innerHTML=sp.map(function(s,i){var key=z==='h'?'Haut':z==='b'?'Bas':s,pool=EX[pl][key]||EX[pl].Full;return'<li>'+days[i]+' · '+s.replace(/ [A-D]$/,'')+'<span>'+pool.slice(0,d).join(' · ')+'</span></li>'}).join('')}
+['sx','ag','ht','wt','ac','gl'].forEach(function(i){$('#'+i).oninput=kcal});['rw','rr'].forEach(function(i){$('#'+i).oninput=orm});['pl','pn','pd','pz'].forEach(function(i){$('#'+i).onchange=prog});kcal();orm();prog();
+
+/* et aussi */
+var FT=[['Programme créé pour toi en une minute','Templates : Push, Pull, Legs, Full body…','Tes propres exercices, avec vidéo','Chrono de repos sur l’écran verrouillé','Charges en kg ou en lbs','Calendrier d’intensité et jours d’affilée'],['Course et vélo en GPS','Apple Watch, même sans iPhone','Séances Garmin, Samsung, Fitbit importées','Paliers de distance à débloquer'],['4,5 millions de produits à scanner','284 aliments de base déjà intégrés','Photo du repas analysée par IA','Objectif de calories et de macros','Suivi de l’hydratation','Tes recettes enregistrées'],['Poids, masse grasse et mensurations','Widgets et raccourcis Siri','Marche hors connexion','Synchronisé entre tes appareils','En 13 langues']];
+function ft(i){$$('.fl button').forEach(function(b,j){b.setAttribute('aria-selected',j===i)});$('#fc').innerHTML='<ul>'+FT[i].map(function(x){return'<li>'+x+'</li>'}).join('')+'</ul>'}
+$$('.fl button').forEach(function(b,i){b.onclick=function(){ft(i)}});ft(0);
+})();
+</script>
+</body>
+</html>
